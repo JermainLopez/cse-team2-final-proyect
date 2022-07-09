@@ -5,8 +5,8 @@ const doc = {
         title: 'Recipes API',
         description: 'Recipes API with Swagger by Jermain Lopez'
     },
-    host: 'localhost:3000',
-    schemes: ['http']
+    host: 'cse-wedding.herokuapp.com',
+    schemes: ['https']
 };
 
 const outputFile = './swagger-wedding-output.json';

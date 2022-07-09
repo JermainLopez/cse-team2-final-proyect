@@ -5,10 +5,10 @@
     "description": "Recipes API with Swagger by Jermain Lopez",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse-wedding.herokuapp.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
