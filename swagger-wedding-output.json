@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Recipes API",
-    "description": "Recipes API with Swagger by Jermain Lopez",
+    "title": "Wedding API",
+    "description": "Wedding API with Swagger by Jermain Lopez",
     "version": "1.0.0"
   },
   "host": "cse-wedding.herokuapp.com",

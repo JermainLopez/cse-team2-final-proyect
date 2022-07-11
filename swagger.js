@@ -2,8 +2,8 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
     info: {
-        title: 'Recipes API',
-        description: 'Recipes API with Swagger by Jermain Lopez'
+        title: 'Wedding API',
+        description: 'Wedding API with Swagger by Jermain Lopez'
     },
     host: 'cse-wedding.herokuapp.com',
     schemes: ['https']
