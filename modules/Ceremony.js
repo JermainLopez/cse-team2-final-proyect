@@ -18,6 +18,9 @@ const CeremonySchema = new mongoose.Schema({
     guests: {
         tipe: String
     },
+    information: {
+        tipe: String
+    },
     status: {
         type: String,
         default: 'public',
