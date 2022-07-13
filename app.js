@@ -10,39 +10,63 @@ const MongoDbStore = require('connect-mongo')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 
-// Load config and path all variables
-dotenv.config({ path: './config.env' })
+//config my passport
+require('./config/password')(passport)
+    // Load config variables
+dotenv.config()
 
+//Start app
 const app = express()
-    // Connect to MongoDB database from Jermain mongodb database
+    // Connect to MongoDB
 connectDB()
 
-
-//Add body parser to parse the body of the request for each controller
+//Add body parser to parse the body of the request
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
-//Suagger method to use the PUT and DELETE method in the form
+// Method override whit this methos we can send a POST request with a PUT or DELETE method
+app.use(
+    methodOverride(function (req, res) {
+      if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+        // look in urlencoded POST bodies and delete it
+        let method = req.body._method
+        delete req.body._method
+        return method
+      }
+    })
+  )
+
+  
+//Suager
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-wedding-output.json');
 
 
+// Logging
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'))
+}
+//Handlebars
+const { engine } = require('express-handlebars')
+app.engine('.hbs', engine({ defaultLayout: 'main', extname: '.hbs' }));
+app.set('view engine', '.hbs');
 
-// Save each session in the mongodb database
+// Sessions
 app.use(
     session({
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: false,
         store: MongoDbStore.create({
-            mongoUrl: process.env.MONGO_URI
+            mongoUrl: process.env.MONGODB_URI,
         })
     })
 )
 
-//set passport middleware to use session
+//set passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
 
 //My static folder
 app.use(express.static(path.join(__dirname, 'public')))
@@ -50,13 +74,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
 app.use('/', require('./routes/index'))
-    //app.use('/ceremony', require('./controllers/ceremony'))
-
+app.use('/auth', require('./routes/auth'))
+app.use('/ceremonies', require('./controllers/ceremony'))
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-//app.use('/', require('./routes/'))
-//app.use('/', require('./routes/'))
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8080
 
 app.listen(
     PORT,

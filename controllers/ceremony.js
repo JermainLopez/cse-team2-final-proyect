@@ -5,7 +5,7 @@ const { ensureAuthenticated } = require('../software/software')
 //Ceremony routes
 const Ceremony = require('../modules/Ceremony')
 
-//Show Recipe page
+//Show Ceremony page
 router.get('/add', ensureAuthenticated, (req, res) => {
     res.render('ceremony/ceremony')
 })
@@ -22,11 +22,12 @@ router.post('/', ensureAuthenticated, async(req, res) => {
     }
 })
 
+//Get all public ceremonies
 router.get('/', ensureAuthenticated, async(req, res) => {
     try {
-        const ceremony = await Ceremony.find({ status: 'public' }).populate('ceremony').sort({ createdAt: 'desc' }).lean()
+        const ceremonies = await Ceremony.find({ status: 'public' }).populate('user').sort({ createdAt: 'desc' }).lean()
         res.render('ceremony/index', {
-            ceremony: ceremony,
+            ceremonies: ceremonies,
         })
     } catch (err) {
         console.error(err)
@@ -34,6 +35,29 @@ router.get('/', ensureAuthenticated, async(req, res) => {
     }
 })
 
+//Edit ceremony by id
+
+
+router.get('/:id', ensureAuthenticated, async(req, res) => {
+    try {
+        const ceremony = await Ceremony.findOne({ _id: req.params.id, }).lean()
+
+        if (!ceremony) {
+            return res.render('error/404')
+        }
+
+        if (ceremony.user != req.user.id) {
+            res.redirect('/dashboard')
+        } else {
+            res.render('ceremony/edit', {
+                ceremony,
+            })
+        }
+    } catch (err) {
+        console.error(err)
+        return res.render('geterror/error500')
+    }
+})
 
 
 

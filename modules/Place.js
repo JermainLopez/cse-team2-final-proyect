@@ -28,6 +28,7 @@ const PlaceSchema = new mongoose.Schema({
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'Ceremony',
         ref: 'User',
     },
     createdAt: {

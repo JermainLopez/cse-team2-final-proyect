@@ -1,0 +1,31 @@
+<h1>Welcome {{ name }}</h1>
+<p>Your ceremonies: </p> 
+
+{{#if ceremonies }}
+    <table class="table1">
+    <thead>
+        <tr>
+            <th>Delete -- Edite</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each ceremonies}}
+        <tr>
+            <td><a href="/ceremonies/{{_id}}" class="btn red darken-4"><i class="material-icons">delete_forever</i></a>
+            <a href="/ceremonies/{{_id}}" class="btn teal darken-4"><i class="material-icons">edit</i></a></td>
+            <td>{{name}}</td>
+            <td>{{createdAt}}</td>
+            <td><span class="ceremonies-status">{{status}}</span></td>
+            <td></td>
+        </tr>
+        {{/each}}
+    </table>
+{{else}}
+    <p>Please Create a ceremonies</p>
+{{/if}}
+

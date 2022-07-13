@@ -1,0 +1,27 @@
+<h1>Ceremonies</h1>
+
+<div class="row">
+    {{#each ceremonies}}
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-content center-align">
+                    <h5>{{name}}</h5>
+                    <img class="image-rounder" src="{{user.image}}" alt="{{user.displayName}}">
+                    <h6>{{place}}</h6>
+                    <p>{{date}}</p>
+                    <p>Status: {{status}}</p>
+                    <br>
+                    <div class="chip  amber darken-3">
+                        <a class="black-text" href="/ceremonies/user/{{user._id}}">{{user.displayName}}</a>
+                    </div>
+                </div>
+                <div class="card-action center-align">
+                    <a href="/ceremonies/{{_id}}" class="btn purple darken-4">Read More</a>
+                </div>
+                <br>
+            </div>
+    </div>
+    {{else}}
+    <p>No ceremonies to display</p>
+    {{/each}}
+</div>
