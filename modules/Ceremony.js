@@ -16,10 +16,10 @@ const CeremonySchema = new mongoose.Schema({
         type: String
     },
     guests: {
-        tipe: String
+        type: String
     },
     information: {
-        tipe: String
+        type: String
     },
     status: {
         type: String,
