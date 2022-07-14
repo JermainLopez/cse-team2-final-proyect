@@ -29,6 +29,7 @@ router.get('/', ensureAuthenticated, async(req, res) => {
         res.render('ceremony/index', {
             ceremonies: ceremonies,
         })
+        res.sendStatus(200);
     } catch (err) {
         console.error(err)
         res.render('geterror/error500')
@@ -96,6 +97,16 @@ router.put('/:id', ensureAuthenticated, async(req, res) => {
     } catch (err) {
         console.error(err)
         return res.render('geterror/error500')
+    }
+})
+
+router.get('/test/:id', async(req,res) => {
+    let id = req.params.id;
+    if (id == '04') {
+        res.status(200);
+    }
+    else {
+        res.status(400);
     }
 })
 
