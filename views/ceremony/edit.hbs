@@ -3,7 +3,7 @@
     <div class="col s12">
         <div class="card">
             <div class="card-content">
-                <form action="/ceremonies" method="POST">
+                <form action="/ceremonies/{{ceremony._id}}" method="POST">
                 <input type="hidden" name="_method" value="PUT">
                     <div class="input-fiel">
                         <select id="stauts" name="status">

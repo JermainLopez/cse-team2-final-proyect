@@ -35,23 +35,63 @@ router.get('/', ensureAuthenticated, async(req, res) => {
     }
 })
 
-//Edit ceremony by id
-
-
-router.get('/:id', ensureAuthenticated, async(req, res) => {
+//Delete Ceremony
+router.delete('/delete/:id', ensureAuthenticated, async(req, res) => {
     try {
         const ceremony = await Ceremony.findOne({ _id: req.params.id, }).lean()
 
         if (!ceremony) {
-            return res.render('error/404')
+            return res.render('geterror/error404')
         }
 
         if (ceremony.user != req.user.id) {
             res.redirect('/dashboard')
         } else {
-            res.render('ceremony/edit', {
-                ceremony,
-            })
+            await Ceremony.deleteOne({ _id: req.params.id })
+            res.redirect('/dashboard')
+        }
+    } catch (err) {
+        console.error(err)
+        return res.render('geterror/error500')
+    }
+})
+
+
+//Edit ceremony by id
+router.get('/:id', ensureAuthenticated, async(req, res) => {
+        try {
+            const ceremony = await Ceremony.findOne({ _id: req.params.id, }).lean()
+
+            if (!ceremony) {
+                return res.render('geterror/error404')
+            }
+
+            if (ceremony.user != req.user.id) {
+                res.redirect('/dashboard')
+            } else {
+                res.render('ceremony/edit', {
+                    ceremony,
+                })
+            }
+        } catch (err) {
+            console.error(err)
+            return res.render('geterror/error500')
+        }
+    })
+    //Put ceremony by id
+router.put('/:id', ensureAuthenticated, async(req, res) => {
+    try {
+        const ceremony = await Ceremony.findOne({ _id: req.params.id, }).lean()
+
+        if (!ceremony) {
+            return res.render('geterror/error404')
+        }
+
+        if (ceremony.user != req.user.id) {
+            res.redirect('/dashboard')
+        } else {
+            await Ceremony.findOneAndUpdate({ _id: req.params.id }, req.body)
+            res.redirect('/dashboard')
         }
     } catch (err) {
         console.error(err)
