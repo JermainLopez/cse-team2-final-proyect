@@ -40,3 +40,11 @@ p {
 .black-text {
     color: black;
 }
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+}

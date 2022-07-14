@@ -16,10 +16,10 @@ const PlaceSchema = new mongoose.Schema({
         type: String
     },
     image: {
-        tipe: String
+        type: String
     },
     description: {
-        tipe: String
+        type: String
     },
     status: {
         type: String,

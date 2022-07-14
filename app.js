@@ -26,17 +26,17 @@ app.use(express.json())
 
 // Method override whit this methos we can send a POST request with a PUT or DELETE method
 app.use(
-    methodOverride(function (req, res) {
-      if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-        // look in urlencoded POST bodies and delete it
-        let method = req.body._method
-        delete req.body._method
-        return method
-      }
+    methodOverride(function(req, res) {
+        if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+            // look in urlencoded POST bodies and delete it
+            let method = req.body._method
+            delete req.body._method
+            return method
+        }
     })
-  )
+)
 
-  
+
 //Suager
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-wedding-output.json');
@@ -76,6 +76,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 app.use('/ceremonies', require('./controllers/ceremony'))
+app.use('/ceremonies/delete/', require('./controllers/ceremony'))
+    //app.use('/places', require('./controllers/place'))
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const PORT = process.env.PORT || 8080
