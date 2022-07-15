@@ -4,7 +4,17 @@ const { ensureAuthenticated } = require('../software/software')
 
 //Ceremony routes
 const Ceremony = require('../modules/Ceremony')
+const Joi = require('@hapi/joi');
 
+const schemaCeremony = Joi.object({
+    name: Joi.string().min(3).max(255).required(),
+    place: Joi.string().min(3).max(255).required(),
+    date: Joi.string().min(3).max(255).required(),
+    host: Joi.string().min(3).max(255).required(),
+    guests: Joi.string().min(3).max(10).required(),
+    information: Joi.string().min(3).max(500).required(),
+    status: Joi.string().min(6).max(7).required()
+});
 //Show Ceremony page
 router.get('/add', ensureAuthenticated, (req, res) => {
     res.render('ceremony/ceremony')
@@ -12,6 +22,16 @@ router.get('/add', ensureAuthenticated, (req, res) => {
 
 //Post Ceremony into de database
 router.post('/', ensureAuthenticated, async(req, res) => {
+
+    const { error } = schemaCeremony.validate(req.body);
+
+    if (error) {
+        //await alert(error.details[0].message);
+        return res.status(400).send({
+            error: error.details[0].message
+        });
+    }
+
     try {
         req.body.user = req.user.id
         await Ceremony.create(req.body)
@@ -29,7 +49,6 @@ router.get('/', ensureAuthenticated, async(req, res) => {
         res.render('ceremony/index', {
             ceremonies: ceremonies,
         })
-        res.sendStatus(200);
     } catch (err) {
         console.error(err)
         res.render('geterror/error500')

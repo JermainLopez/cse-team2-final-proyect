@@ -4,23 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
-        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> --}}
+    {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" 
+        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />  --}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <title>Wedding Login</title>
 </head>
 
-<body class="wedding-body">
-    <div class="container principal-container">
-        <div class="card">
-            <div class="card-content">
-                {{{body}}}
-            </div>
-        </div>
-    </div>
+<body>
+    <header>
+        <nav id="nav-home">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><img src="https://cdn-icons.flaticon.com/png/512/3074/premium/3074317.png?token=exp=1657925227~hmac=e9338a3c3e5592cff07a7f928940c721"
+                        alt="logo" id="brand-logo"></li>
+                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main>
+        {{{body}}}
+    </main>
+
+    <footer id="contact">
+        <div class="brand">
+            <div class="f-logo">
+                <img src="https://cdn-icons.flaticon.com/png/512/3074/premium/3074317.png?token=exp=1657925227~hmac=e9338a3c3e5592cff07a7f928940c721" alt="logo">
+            </div>
+            <p>&copy; 2020 Wedding Planner</p>
+        </div>
+        <div class="links">
+            <h3>TOOLS</h3>
+            <ul>
+                <li><a href="">API</a></li>
+            </ul>
+        </div>
+        <div class="links">
+            <h3>COMPANY</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="/auth/google">Login</a></li>
+                <li><a href="#img-gallery">Gallery</a></li>
+            </ul>
+        </div>
+        <div class="links">
+            <h3>CONTACT</h3>
+            <ul>
+                <li>Phone Number</li>
+                <li>Email</li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/20512df472.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 

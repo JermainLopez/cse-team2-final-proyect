@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@100;300;400;500&display=swap');
+
+:root {
+    --primary-color: #ffb4a2;
+    --secondary-color: #000;
+    --font-text: 'Roboto', sans-serif;
+    --font-cursive: 'Lobster', cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 .wedding-body {
     width: 100%;
     background-image: url("https://wallpaper.dog/large/20521568.jpg");
@@ -47,4 +66,232 @@ p {
     justify-content: center;
     align-items: center;
     justify-content: space-around;
+}
+
+a {
+    text-decoration: none;
+}
+
+#nav-home {
+    background-color: transparent;
+    padding: 2em 10em;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+}
+
+#nav-home ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    width: 100%;
+}
+
+#nav-home ul li {
+    margin: auto 0;
+    margin-right: 100px;
+}
+
+#brand-logo {
+    height: 100px;
+    width: 100px;
+}
+
+#nav-home ul li a {
+    font-size: 1.3rem;
+    font-family: var(--font-text);
+    font-weight: 500;
+    color: #000;
+    padding: 0.5em 1em;
+    border-radius: 10px;
+}
+
+#nav-home ul li a:hover {
+    background-color: #0a100d;
+    color: white;
+    transition: 0.3s;
+}
+
+#banner {
+    background: url(https://images.unsplash.com/photo-1544078751-58fee2d8a03b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+
+    display: flex;
+    position: relative;
+}
+
+.bg-black {
+    background-color: #000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    z-index: 2;
+}
+
+.banner-desc {
+    color: white;
+    z-index: 4;
+    padding-left: 10em;
+    width: 45%;
+    position: absolute;
+    bottom: 20%;
+}
+
+.banner-desc h1 {
+    font-family: var(--font-cursive);
+    font-size: 10vh;
+    margin-bottom: 20px;
+}
+
+.banner-desc p {
+    font-family: var(--font-text);
+    font-size: 3vh;
+    font-weight: 100;
+}
+
+#img-gallery {
+    display: flex;
+    padding: 5em 10em;
+    justify-content: space-between;
+}
+
+#img-gallery img {
+    width: 24%;
+    border-radius: 10px; 
+    filter: grayscale(0);
+    cursor: pointer;   
+}
+
+#img-gallery img:hover {
+    filter: grayscale(100); 
+    transition: 0.8s;  
+}
+
+#about-us {
+    display: flex;
+    padding: 5em 10em;
+    justify-content: space-between;
+}
+
+#about-us .desc {
+    width: 50%;
+}
+
+#about-us .desc h2 {
+    font-family: var(--font-cursive);
+    font-size: 6vh;
+    color: #0a100d;
+    margin-bottom: 50px;
+}
+
+#about-us .desc p {
+    font-size: 3vh;
+    font-family: var(--font-text);
+    font-weight: 300;
+    text-align: justify;
+}
+
+#about-us .img-desc {
+    width: 50%;
+    display: flex;
+}
+
+.img-desc img {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.desc-btns {
+    display: flex;
+    margin-top: 50px;
+}
+
+.desc-btns img {
+    width: 100%;
+}
+
+#login {
+    background-color: #6e1423;
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-left: 0;
+    margin-right: 50px;
+    width: 30%;
+    padding: 1em 0;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--font-text);
+}
+
+#login:hover {
+    background-color: #641220;
+}
+
+#login-google {
+    width: 30%;
+}
+
+#contact {
+    background-color: #0a100d;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5em 10em;
+    font-family: var(--font-text);
+}
+#contact h3 {
+    color: white;
+}
+
+.brand {
+    display: flex;
+    color: white;
+}
+
+.f-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 0.5em;
+    margin-right: 20px;
+}
+
+.f-logo img {
+    width: 100%;
+}
+
+.brand p {
+    height: 100px;
+    line-height: 100px;
+    font-family: var(--font-text);
+    font-weight: 1.2rem;
+}
+
+#contact ul {
+    list-style: none;
+    margin-top: 40px;
+}
+
+#contact li {
+    margin-top: 20px;
+    color: #eef0eb;
+}
+
+#contact li a {
+    color: #eef0eb;
+}
+
+#contact li a:hover {
+    color: #f2c078;
 }
