@@ -77,7 +77,7 @@ app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 app.use('/ceremonies', require('./controllers/ceremony'))
 app.use('/ceremonies/delete/', require('./controllers/ceremony'))
-    //app.use('/places', require('./controllers/place'))
+app.use('/places', require('./controllers/place'))
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const PORT = process.env.PORT || 8080
@@ -86,4 +86,3 @@ app.listen(
     PORT,
     console.log(`Server running in mode on port ${PORT}`)
 )
-

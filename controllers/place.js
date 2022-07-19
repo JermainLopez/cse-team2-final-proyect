@@ -8,11 +8,11 @@ const Joi = require('@hapi/joi');
 
 const schemaPlace = Joi.object({
     name: Joi.string().min(3).max(255).required(),
-    address: Joi.string().min(3).max(255).required(),
     city: Joi.string().min(3).max(255).required(),
-    state: Joi.string().min(3).max(255).required(),
-    zip: Joi.string().min(3).max(255).required(),
     country: Joi.string().min(3).max(255).required(),
+    image: Joi.string().min(3).max(255).required(),
+    image2: Joi.string().min(3).max(255).required(),
+    image3: Joi.string().min(3).max(255).required(),
     information: Joi.string().min(3).max(500).required(),
     status: Joi.string().min(6).max(7).required()
 });
@@ -55,7 +55,7 @@ router.get('/', ensureAuthenticated, async(req, res) => {
         console.error(err)
         res.render('geterror/error500')
     }
-}) 
+})
 
 // Delete Place
 router.delete('/delete/:id', ensureAuthenticated, async(req, res) => {
@@ -79,7 +79,7 @@ router.delete('/delete/:id', ensureAuthenticated, async(req, res) => {
 })
 
 // Edit Place by id
-router.get('/edit/:id', ensureAuthenticated, async(req, res) => {
+router.get('/:id', ensureAuthenticated, async(req, res) => {
     try {
         const place = await Place.findOne({ _id: req.params.id }).lean()
 
@@ -90,7 +90,7 @@ router.get('/edit/:id', ensureAuthenticated, async(req, res) => {
         if (place.user != req.user.id) {
             res.redirect('/dashboard')
         } else {
-            res.render('place/place', {
+            res.render('place/edit', {
                 place: place,
             })
         }
@@ -98,10 +98,10 @@ router.get('/edit/:id', ensureAuthenticated, async(req, res) => {
         console.error(err)
         return res.render('geterror/error500')
     }
-}) 
+})
 
 // Put Place by id
-router.put('/edit/:id', ensureAuthenticated, async(req, res) => {
+router.put('/:id', ensureAuthenticated, async(req, res) => {
     try {
         const place = await Place.findOne({ _id: req.params.id }).lean()
 
@@ -121,7 +121,7 @@ router.put('/edit/:id', ensureAuthenticated, async(req, res) => {
     }
 })
 
-router.get('/test/:id', async(req,res) => {
+router.get('/test/:id', async(req, res) => {
     let id = req.params.id
     if (id == '04') {
         res.status(200)
