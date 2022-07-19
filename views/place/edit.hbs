@@ -1,10 +1,10 @@
-<h3>Edit Place</h3>
+<h3>Add Places</h3>
 <div class="row">
     <div class="col s12">
         <div class="card">
             <div class="card-content">
                 <form action="/places/{{place._id}}" method="POST">
-                    <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_method" value="PUT">
                     <div class="input-fiel">
                         <select id="stauts" name="status">
                             <option value="public">Public</option>
@@ -20,26 +20,8 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="address" name="address" type="text" class="validate" value="{{place.address}}">
-                            <label for="address">Address</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
                             <input id="city" name="city" type="text" class="validate" value="{{place.city}}">
                             <label for="city">City</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="state" name="state" type="text" class="validate" value="{{place.state}}">
-                            <label for="state">State</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="zip" name="zip" type="text" class="validate" value="{{place.zip}}">
-                            <label for="zip">ZIP</label>
                         </div>
                     </div>
                     <div class="row">
@@ -48,22 +30,34 @@
                             <label for="country">Country</label>
                         </div>
                     </div>
+                    <H5>Add three images link from this place </H5>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="info" name="info" type="text" class="validate" value="{{place.info}}">
-                            <label for="info">Additional Information</label>
+                            <input id="image" name="image" type="text" class="validate" value="{{place.image}}">
+                            <label for="image">Image 1</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="image2" name="image2" type="text" class="validate" value="{{place.image2}}">
+                            <label for="image2">Image 2</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="image3" name="image3" type="text" class="validate" value="{{place.image3}}">
+                            <label for="image3">Image 3</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field">
-                            <h5>List of Invited Guests:</h5>
-                            <textarea id="information" name="information">{{place.information}}</textarea>
+                            <h5>Add some information about this place:</h5>
+                            <textarea id="information" name="information" value="{{place.information}}"></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <input type="submit" value="Save" class="btn  teal darken-4">
                         <a href="/dashboard" class="btn black">Cancel</a>
-                    </div>
                 </form>
             </div>
         </div>

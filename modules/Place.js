@@ -12,13 +12,16 @@ const PlaceSchema = new mongoose.Schema({
     country: {
         type: String
     },
-    host: {
-        type: String
-    },
     image: {
         type: String
     },
-    description: {
+    image2: {
+        type: String
+    },
+    image3: {
+        type: String
+    },
+    information: {
         type: String
     },
     status: {
@@ -28,7 +31,6 @@ const PlaceSchema = new mongoose.Schema({
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Ceremony',
         ref: 'User',
     },
     createdAt: {
