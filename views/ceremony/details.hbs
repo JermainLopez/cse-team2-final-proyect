@@ -1,0 +1,33 @@
+<h3>Details</h3>
+<section id="c-details">
+    <div class="c-container">
+        <div class="c-info">
+            <h5 class="c-label">Name: </h5>
+            <h5>{{ceremony.name}}</h5>
+        </div>
+        <div class="c-info">
+            <h5 class="c-label">Place: </h5>
+            <h5>{{ceremony.place}}</h5>
+        </div>
+        <div class="c-info">
+            <h5 class="c-label">Date: </h5>
+            <h5>{{ceremony.date}}</h5>
+        </div>
+        <div class="c-info">
+            <h5 class="c-label">Host: </h5>
+            <h5>{{ceremony.host}}</h5>
+        </div>
+        <div class="c-info">
+            <h5 class="c-label">Total Guests: </h5>
+            <h5>{{ceremony.guests}}</h5>
+        </div>
+        <div>
+            <h5 class="c-label">Description: </h5> <br>
+            <textarea id="information" readonly>{{ceremony.information}}</textarea>
+        </div>
+    </div>
+    <div class="c-container">
+        <h5 class="c-label">Memories: </h5>
+        <iframe src="{{ceremony.memories}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+    </div>
+</section>

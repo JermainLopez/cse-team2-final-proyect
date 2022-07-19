@@ -21,6 +21,9 @@ const CeremonySchema = new mongoose.Schema({
     information: {
         type: String
     },
+    memories: {
+        type: String
+    },
     status: {
         type: String,
         default: 'public',

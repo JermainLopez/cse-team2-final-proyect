@@ -17,7 +17,7 @@ const schemaCeremony = Joi.object({
 });
 //Show Ceremony page
 router.get('/add', ensureAuthenticated, (req, res) => {
-    res.render('ceremony/ceremony')
+    res.render('ceremony/ceremony', {error: 'false'})
 })
 
 //Post Ceremony into de database
@@ -26,10 +26,8 @@ router.post('/', ensureAuthenticated, async(req, res) => {
     const { error } = schemaCeremony.validate(req.body);
 
     if (error) {
-        //await alert(error.details[0].message);
-        return res.status(400).send({
-            error: error.details[0].message
-        });
+        console.log(error.details[0].message);
+        return res.render('ceremony/ceremony', {error: error.details[0].message});
     }
 
     try {
@@ -38,7 +36,7 @@ router.post('/', ensureAuthenticated, async(req, res) => {
         res.redirect('/dashboard')
     } catch (err) {
         console.error(err.message)
-        res.redirect('geterror/error500')
+        res.render('geterror/error500')
     }
 })
 
@@ -93,6 +91,23 @@ router.get('/:id', ensureAuthenticated, async(req, res) => {
                     ceremony,
                 })
             }
+        } catch (err) {
+            console.error(err)
+            return res.render('geterror/error500')
+        }
+    })
+
+    router.get('/details/:id', async(req, res) => {
+        try {
+            const ceremony = await Ceremony.findOne({ _id: req.params.id, }).lean()
+
+            if (!ceremony) {
+                return res.render('geterror/error404')
+            }
+
+            res.render('ceremony/details', {
+                ceremony,
+            })
         } catch (err) {
             console.error(err)
             return res.render('geterror/error500')
