@@ -13,6 +13,7 @@ const schemaCeremony = Joi.object({
     host: Joi.string().min(3).max(255).required(),
     guests: Joi.string().min(3).max(10).required(),
     information: Joi.string().min(3).max(500).required(),
+    memories: Joi.string().min(3).max(500).required(),
     status: Joi.string().min(6).max(7).required()
 });
 //Show Ceremony page

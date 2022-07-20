@@ -10,7 +10,7 @@ const doc = {
 };
 
 const outputFile = './swagger-wedding-output.json';
-const endpointsFiles = ['./routes/index.js'];
+const endpointsFiles = ['./app.js'];
 
 
 swaggerAutogen(outputFile, endpointsFiles, doc);
